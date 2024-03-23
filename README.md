@@ -23,7 +23,7 @@
 
 
 ## 🌐 Socials:
-[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/tikamchand06) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/tikamchand06) ![X](https://img.shields.io/twitter/follow/tikamchand06)
+[![Facebook](https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white)](https://facebook.com/tikamchand06) [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/tikamchand06) ![X](https://img.shields.io/twitter/follow/tikamchand06) [![](https://visitcount.itsvg.in/api?id=tikamchand06&label=Profile%20Views&pretty=true)](https://visitcount.itsvg.in)
 
 
 # 💻 Tech Stack:
@@ -36,8 +36,6 @@
 
 ## 🏆 GitHub Trophies
 ![](https://github-profile-trophy.vercel.app/?username=tikamchand06&theme=gitdimmed&no-frame=true&no-bg=true&margin-w=4)
-
-[![](https://visitcount.itsvg.in/api?id=tikamchand06&label=Profile%20Views&pretty=true)](https://visitcount.itsvg.in)
 
 ## 💰 You can help me by Donating
 [![BuyMeACoffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/tikamchand06) [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/tikamchand06) 
