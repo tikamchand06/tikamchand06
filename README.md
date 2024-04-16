@@ -4,7 +4,7 @@
 - :man: TIKAM CHAND MEGHWANSHI
 - :billed_cap: Software Engineer
 - :round_pushpin: Jaipur, Rajasthan (India)
-- :globe_with_meridians: [http://www.tcmhack.in](https://www.tcmhack.in)
+- :globe_with_meridians: [https://www.tcmhack.in](https://www.tcmhack.in)
 - :sunglasses: [https://leetcode.com/tikamchand06](https://leetcode.com/tikamchand06)
 
 ## 💻 My Tech-Stack
