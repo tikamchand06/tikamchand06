@@ -35,7 +35,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="mt-10 flex flex-col items-center gap-4 border-t border-border pt-8 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="meta text-muted-foreground">
             <Copyright
               aria-label="Copyright"
@@ -46,7 +46,7 @@ export function SiteFooter() {
               href="https://lordicon.com/"
               target="_blank"
               rel="noreferrer"
-              className="underline underline-offset-4 hover:text-foreground"
+              className="underline decoration-border underline-offset-4 transition-colors duration-[var(--motion-fast)] hover:text-primary hover:decoration-primary"
             >
               Lordicon.com
             </a>
@@ -59,7 +59,7 @@ export function SiteFooter() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex size-11 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-[var(--motion-fast)] hover:bg-muted hover:text-foreground"
+                  className="flex size-11 items-center justify-center rounded-sm text-muted-foreground transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:bg-primary/5 hover:text-primary"
                 >
                   <SocialIcon name={social.icon} className="size-4" />
                   <span className="sr-only">

@@ -30,14 +30,32 @@ const isCurrent = (pathname, href) =>
 export function SiteHeader() {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
+  const [scrolled, setScrolled] = React.useState(false)
+
+  React.useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8)
+    onScroll()
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/80 backdrop-blur-xl">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b backdrop-blur-xl transition-all duration-[var(--motion-normal)]",
+        scrolled
+          ? "border-border/70 bg-background/80 shadow-2"
+          : "border-transparent bg-background/40"
+      )}
+    >
       <div className="shell flex h-18 items-center justify-between gap-1 py-4 sm:gap-6">
-        <Link href="/" className="flex min-w-0 items-center gap-2 sm:gap-3">
+        <Link
+          href="/"
+          className="group flex min-w-0 items-center gap-2 sm:gap-3"
+        >
           <span
             aria-hidden
-            className="flex size-9 shrink-0 items-center justify-center rounded-sm text-[14px] font-extrabold text-white"
+            className="flex size-9 shrink-0 items-center justify-center rounded-sm text-[14px] font-extrabold text-white shadow-glow transition-transform duration-[var(--motion-normal)] group-hover:scale-105 group-hover:-rotate-6"
             style={{
               background:
                 "linear-gradient(135deg, var(--hue-1-from), var(--hue-2-from))",
@@ -45,7 +63,7 @@ export function SiteHeader() {
           >
             {profile.initials}
           </span>
-          <span className="display truncate text-[16px] min-[400px]:text-[18px] min-[430px]:text-[20px] sm:text-subhead">
+          <span className="display truncate text-[16px] transition-colors duration-[var(--motion-fast)] group-hover:text-primary min-[400px]:text-[18px] min-[430px]:text-[20px] sm:text-subhead">
             {profile.name}
           </span>
         </Link>
@@ -67,7 +85,7 @@ export function SiteHeader() {
                     "rounded-sm px-4 py-2 text-[15px] font-semibold transition-colors duration-[var(--motion-fast)]",
                     isActive
                       ? "bg-background text-foreground shadow-2"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground hover:bg-background/60 hover:text-foreground"
                   )}
                 >
                   {link.label}
@@ -83,7 +101,7 @@ export function SiteHeader() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex size-9 shrink-0 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-[var(--motion-fast)] hover:bg-muted hover:text-foreground"
+                  className="flex size-9 shrink-0 items-center justify-center rounded-sm text-muted-foreground transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:bg-primary/5 hover:text-primary"
                 >
                   <SocialIcon name={social.icon} className="size-4" />
                   <span className="sr-only">
@@ -144,7 +162,7 @@ export function SiteHeader() {
                       href={social.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="flex size-11 items-center justify-center rounded-sm border border-border"
+                      className="flex size-11 items-center justify-center rounded-sm border border-border text-muted-foreground transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
                     >
                       <SocialIcon name={social.icon} className="size-5" />
                       <span className="sr-only">
