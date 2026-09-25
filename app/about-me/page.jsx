@@ -1,8 +1,9 @@
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, GraduationCap } from "lucide-react"
 
 import { ProjectGrid } from "@/components/project-grid"
+import { cn } from "@/lib/utils"
 import {
   about,
   education,
@@ -22,12 +23,12 @@ const aboutStats = [
     value: `${new Date().getFullYear() - careerStart}+ years`,
   },
   { label: "At UXArmy", value: "Since 2017" },
-  { label: "Shipped", value: `${projects.length} projects` },
+  { label: "Shipped", value: `${projects.length}+ projects` },
 ]
 
 export const metadata = {
   title: "About Me",
-  description: "Who I am and what I build with.",
+  description: `${profile.name}: software engineer in Jaipur, India, with 10+ years building web apps and browser extensions.`,
 }
 
 export default function AboutPage() {
@@ -46,29 +47,38 @@ export default function AboutPage() {
             <span className="text-gradient">for the web</span>
           </h1>
 
-          <div className="mt-12 grid gap-10 md:grid-cols-[1fr_1.4fr]">
+          <div className="mt-12 grid items-start gap-10 md:grid-cols-[minmax(0,320px)_minmax(0,1fr)] md:gap-14 lg:gap-20">
             <Image
               src={profile.photo}
               alt={profile.name}
               width={460}
               height={460}
               priority
-              className="aspect-square w-full max-w-[280px] rounded-2xl object-cover shadow-glow"
+              className="aspect-[4/5] w-full max-w-[320px] rounded-2xl object-cover shadow-glow ring-1 ring-border ring-offset-4 ring-offset-background md:sticky md:top-28"
             />
 
-            <div className="space-y-6">
+            <div className="max-w-2xl space-y-6">
               <p className="text-lead text-pretty">{about[0]}</p>
               {about.slice(1).map((paragraph) => (
-                <p key={paragraph} className="text-body text-muted-foreground">
+                <p
+                  key={paragraph}
+                  className="text-body leading-relaxed text-pretty text-muted-foreground"
+                >
                   {paragraph}
                 </p>
               ))}
 
-              <dl className="flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-6">
-                {aboutStats.map((stat) => (
-                  <div key={stat.label}>
+              <dl className="grid grid-cols-3 gap-3 pt-2">
+                {aboutStats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    style={{ animationDelay: `${index * 90}ms` }}
+                    className="group animate-in cursor-default rounded-lg border border-border bg-card/70 p-4 shadow-2 transition-all duration-[var(--motion-normal)] fade-in slide-in-from-bottom-3 fill-mode-both hover:-translate-y-1 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lift"
+                  >
                     <dt className="meta text-muted-foreground">{stat.label}</dt>
-                    <dd className="display mt-1 text-subhead">{stat.value}</dd>
+                    <dd className="display mt-1.5 text-lg transition-colors duration-[var(--motion-fast)] group-hover:text-primary sm:text-subhead">
+                      {stat.value}
+                    </dd>
                   </div>
                 ))}
               </dl>
@@ -81,12 +91,19 @@ export default function AboutPage() {
         <p className="meta text-muted-foreground">Experience</p>
         <h2 className="display mt-3 text-heading">Where I've worked</h2>
 
-        <ol className="mt-10 space-y-6">
+        <ol className="relative mt-10 space-y-6 before:absolute before:top-4 before:bottom-4 before:left-[7px] before:w-px before:bg-border md:pl-10 md:before:left-[15px]">
           {experience.map((job) => (
             <li
               key={job.company}
-              className="rounded-xl border border-border bg-card p-6 shadow-2 md:p-8"
+              className="relative rounded-xl border border-border bg-card p-6 shadow-2 transition-all duration-[var(--motion-normal)] hover:border-primary/30 hover:shadow-lift md:p-8"
             >
+              <span
+                aria-hidden
+                className={cn(
+                  "absolute top-8 -left-[31px] hidden size-3 rounded-full ring-4 ring-background md:block",
+                  job.period.includes("Present") ? "bg-primary" : "bg-border"
+                )}
+              />
               <div className="flex flex-wrap items-baseline justify-between gap-2">
                 <h3 className="display text-subhead">
                   {job.role}{" "}
@@ -94,14 +111,21 @@ export default function AboutPage() {
                     at {job.company}
                   </span>
                 </h3>
-                <p className="meta text-muted-foreground">{job.period}</p>
+                <p className="meta flex items-center gap-2 text-muted-foreground">
+                  {job.period.includes("Present") ? (
+                    <span className="rounded-full bg-primary/10 px-2 py-0.5 text-primary">
+                      Current
+                    </span>
+                  ) : null}
+                  {job.period}
+                </p>
               </div>
 
-              <ul className="mt-5 space-y-2">
+              <ul className="mt-5 max-w-3xl space-y-3">
                 {job.points.map((point) => (
                   <li
                     key={point}
-                    className="flex gap-3 text-body text-muted-foreground"
+                    className="flex gap-3 text-body leading-relaxed text-muted-foreground"
                   >
                     <span
                       aria-hidden
@@ -114,13 +138,23 @@ export default function AboutPage() {
             </li>
           ))}
 
-          <li className="flex flex-wrap items-baseline justify-between gap-2 rounded-xl border border-dashed border-border p-6 md:px-8">
-            <h3 className="display text-subhead">
-              {education.degree}{" "}
-              <span className="text-muted-foreground">
-                at {education.school}
-              </span>
-            </h3>
+          <li className="relative flex flex-wrap items-center justify-between gap-2 rounded-xl border border-dashed border-border p-6 md:px-8">
+            <span
+              aria-hidden
+              className="absolute top-1/2 -left-[31px] hidden size-3 -translate-y-1/2 rounded-full bg-border ring-4 ring-background md:block"
+            />
+            <div className="flex items-start gap-3">
+              <GraduationCap
+                aria-hidden
+                className="mt-1 size-5 shrink-0 text-muted-foreground"
+              />
+              <h3 className="display text-subhead">
+                {education.degree}{" "}
+                <span className="text-muted-foreground">
+                  at {education.school}
+                </span>
+              </h3>
+            </div>
             <p className="meta text-muted-foreground">{education.period}</p>
           </li>
         </ol>
@@ -134,7 +168,7 @@ export default function AboutPage() {
           {stack.map((group, index) => (
             <div
               key={group.group}
-              className="rounded-xl border border-border bg-card p-6 shadow-2"
+              className="rounded-xl border border-border bg-card p-6 shadow-2 transition-all duration-[var(--motion-normal)] hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift"
             >
               <div className="flex items-center gap-3">
                 <span
@@ -151,7 +185,7 @@ export default function AboutPage() {
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-full bg-muted px-3 py-1 text-[13px] font-semibold text-muted-foreground"
+                    className="cursor-default rounded-full border border-border bg-card/70 px-3 py-1 text-[13px] font-semibold text-muted-foreground transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary"
                   >
                     {item}
                   </li>
