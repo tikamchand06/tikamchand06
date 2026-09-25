@@ -5,11 +5,18 @@ import { HeroPortrait } from "@/components/hero-portrait"
 import { ProjectGrid } from "@/components/project-grid"
 import { about, featuredProjects, profile, stack } from "@/lib/content"
 
-const hiddenOnHome = new Set(["shadcn/ui", "Material UI"])
+const hiddenOnHome = new Set(["TypeScript", "shadcn/ui", "Material UI"])
 
-const marquee = [...new Set(stack.flatMap((group) => group.items))]
-  .filter((item) => !hiddenOnHome.has(item))
-  .slice(0, 14)
+const marquee = [
+  "Browser Extensions",
+  ...[...new Set(stack.flatMap((group) => group.items))]
+    .filter((item) => !hiddenOnHome.has(item))
+    .slice(0, 14),
+  "Supabase",
+  "Vercel",
+  "AWS",
+  "Stripe",
+]
 
 export default function HomePage() {
   return (
@@ -23,25 +30,34 @@ export default function HomePage() {
         <div className="shell relative grid items-center gap-12 pt-16 pb-20 md:pt-24 md:pb-28 lg:grid-cols-[1fr_auto]">
           <div>
             {profile.available ? (
-              <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[14px] font-semibold shadow-2">
+              <p className="inline-flex animate-in items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-[14px] font-semibold shadow-2 duration-700 fill-mode-both fade-in slide-in-from-bottom-3">
                 <span className="relative flex size-2">
-                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-70" />
-                  <span className="relative inline-flex size-2 rounded-full bg-primary" />
+                  <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-70" />
+                  <span className="relative inline-flex size-2 rounded-full bg-emerald-500" />
                 </span>
                 Available for new work
               </p>
             ) : null}
 
-            <h1 className="display mt-8 max-w-4xl text-title text-balance md:text-display">
+            <h1
+              style={{ animationDelay: "80ms" }}
+              className="display mt-8 max-w-4xl animate-in text-title text-balance duration-700 fill-mode-both fade-in slide-in-from-bottom-3 md:text-display"
+            >
               I build <span className="text-gradient">software</span> for the
               web
             </h1>
 
-            <p className="mt-8 max-w-xl text-lead text-pretty text-muted-foreground">
+            <p
+              style={{ animationDelay: "160ms" }}
+              className="mt-8 max-w-xl animate-in text-lead text-pretty text-muted-foreground duration-700 fill-mode-both fade-in slide-in-from-bottom-3"
+            >
               {profile.tagline}
             </p>
 
-            <div className="mt-10 flex flex-wrap items-center gap-4">
+            <div
+              style={{ animationDelay: "240ms" }}
+              className="mt-10 flex animate-in flex-wrap items-center gap-4 duration-700 fill-mode-both fade-in slide-in-from-bottom-3"
+            >
               <Link
                 href="/my-work"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-glow-strong"
@@ -62,7 +78,7 @@ export default function HomePage() {
               {marquee.map((item, index) => (
                 <li
                   key={item}
-                  style={{ animationDelay: `${index * 40}ms` }}
+                  style={{ animationDelay: `${320 + index * 40}ms` }}
                   className="animate-in cursor-default rounded-full border border-border bg-card/70 px-4 py-1.5 text-[13px] font-semibold text-muted-foreground transition-all duration-[var(--motion-fast)] fill-mode-both fade-in slide-in-from-bottom-2 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:shadow-2"
                 >
                   {item}
@@ -71,7 +87,7 @@ export default function HomePage() {
             </ul>
           </div>
 
-          <div className="order-first lg:order-none lg:pr-6">
+          <div className="order-first animate-in duration-1000 fill-mode-both zoom-in-95 fade-in lg:order-none lg:pr-6">
             <HeroPortrait src={profile.photo} alt={profile.name} />
           </div>
         </div>
@@ -86,10 +102,13 @@ export default function HomePage() {
 
           <Link
             href="/my-work"
-            className="inline-flex items-center gap-2 font-semibold text-primary transition-transform duration-[var(--motion-fast)] hover:translate-x-0.5"
+            className="group inline-flex min-h-11 items-center gap-2 rounded-full border border-transparent px-4 font-semibold text-primary transition-all duration-[var(--motion-fast)] hover:border-primary/30 hover:bg-primary/5"
           >
             All projects
-            <ArrowUpRight aria-hidden className="size-4" />
+            <ArrowUpRight
+              aria-hidden
+              className="size-4 transition-transform duration-[var(--motion-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            />
           </Link>
         </div>
 

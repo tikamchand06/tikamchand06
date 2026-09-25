@@ -73,7 +73,7 @@ export default function AboutPage() {
                   <div
                     key={stat.label}
                     style={{ animationDelay: `${index * 90}ms` }}
-                    className="group animate-in cursor-default rounded-lg border border-border bg-card/70 p-4 shadow-2 transition-all duration-[var(--motion-normal)] fade-in slide-in-from-bottom-3 fill-mode-both hover:-translate-y-1 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lift"
+                    className="group animate-in cursor-default rounded-lg border border-border bg-card/70 p-4 shadow-2 transition-all duration-[var(--motion-normal)] fill-mode-both fade-in slide-in-from-bottom-3 hover:-translate-y-1 hover:border-primary/40 hover:bg-primary/5 hover:shadow-lift"
                   >
                     <dt className="meta text-muted-foreground">{stat.label}</dt>
                     <dd className="display mt-1.5 text-lg transition-colors duration-[var(--motion-fast)] group-hover:text-primary sm:text-subhead">
@@ -164,11 +164,18 @@ export default function AboutPage() {
         <p className="meta text-muted-foreground">Stack</p>
         <h2 className="display mt-3 text-heading">What I build with</h2>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-12">
           {stack.map((group, index) => (
             <div
               key={group.group}
-              className="rounded-xl border border-border bg-card p-6 shadow-2 transition-all duration-[var(--motion-normal)] hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift"
+              className={cn(
+                "rounded-xl border border-border bg-card p-6 shadow-2 transition-all duration-[var(--motion-normal)] hover:-translate-y-1 hover:border-primary/30 hover:shadow-lift",
+                index === 0
+                  ? "sm:col-span-2 lg:col-span-7"
+                  : index === 1
+                    ? "lg:col-span-5"
+                    : "lg:col-span-4"
+              )}
             >
               <div className="flex items-center gap-3">
                 <span
