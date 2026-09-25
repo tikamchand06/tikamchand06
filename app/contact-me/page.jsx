@@ -3,11 +3,13 @@ import Image from "next/image"
 
 import { SocialIcon } from "@/components/social-icon"
 import { profile } from "@/lib/content"
+import { pageMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "Contact Me",
-  description: `Get in touch with ${profile.name}.`,
-}
+  description: `Hire ${profile.name}, a Jaipur-based software engineer, for web apps, SaaS products and Chrome or Firefox extensions. Email, phone and social links.`,
+  path: "/contact-me",
+})
 
 export default function ContactPage() {
   return (

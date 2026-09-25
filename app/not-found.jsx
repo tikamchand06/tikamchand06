@@ -3,6 +3,8 @@ import { ArrowLeft, ArrowRight } from "lucide-react"
 
 export const metadata = {
   title: "Page not found",
+  robots: { index: false, follow: true },
+  alternates: { canonical: null },
 }
 
 const suggestions = [

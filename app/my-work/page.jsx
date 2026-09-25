@@ -1,11 +1,13 @@
 import { WorkBrowser } from "@/components/work-browser"
 import { projects } from "@/lib/content"
+import { pageMetadata } from "@/lib/seo"
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "My Work",
   description:
     "Web apps, products and browser extensions built by Tikam Chand Meghwanshi.",
-}
+  path: "/my-work",
+})
 
 export default function WorkPage() {
   return (
@@ -25,6 +27,7 @@ export default function WorkPage() {
           a technology to filter, or click a tag on any card.
         </p>
 
+        <h2 className="sr-only">Projects</h2>
         <div className="mt-12">
           <WorkBrowser projects={projects} />
         </div>

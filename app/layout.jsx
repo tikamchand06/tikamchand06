@@ -4,6 +4,8 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { SiteHeader } from "@/components/site-header"
+import { JsonLd } from "@/components/json-ld"
+import { pageMetadata, personSchema, websiteSchema } from "@/lib/seo"
 import { SiteFooter } from "@/components/site-footer"
 import { cn } from "@/lib/utils"
 import { profile } from "@/lib/content"
@@ -32,18 +34,7 @@ export const metadata = {
     default: `${profile.name} — ${profile.role}`,
     template: `%s — ${profile.name}`,
   },
-  description: profile.tagline,
-  openGraph: {
-    title: `${profile.name} — ${profile.role}`,
-    description: profile.tagline,
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${profile.name} — ${profile.role}`,
-    description: profile.tagline,
-    creator: "@tikamchand06",
-  },
+  ...pageMetadata({ description: profile.tagline, path: "/" }),
 }
 
 export default function RootLayout({ children }) {
@@ -65,6 +56,7 @@ export default function RootLayout({ children }) {
             <div className="flex min-h-svh flex-col">
               <SiteHeader />
               <main className="flex-1">{children}</main>
+              <JsonLd data={{ "@graph": [personSchema, websiteSchema] }} />
               <SiteFooter />
             </div>
           </TooltipProvider>

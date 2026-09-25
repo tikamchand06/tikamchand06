@@ -13,6 +13,8 @@ import {
   projects,
   stack,
 } from "@/lib/content"
+import { JsonLd } from "@/components/json-ld"
+import { pageMetadata, personSchema } from "@/lib/seo"
 
 // First full-time role began Jul 2016
 const careerStart = 2016
@@ -26,14 +28,22 @@ const aboutStats = [
   { label: "Shipped", value: `${projects.length}+ projects` },
 ]
 
-export const metadata = {
+export const metadata = pageMetadata({
   title: "About Me",
   description: `${profile.name}: software engineer in Jaipur, India, with 10+ years building web apps and browser extensions.`,
-}
+  path: "/about-me",
+})
 
 export default function AboutPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@type": "ProfilePage",
+          url: `${profile.url}/about-me`,
+          mainEntity: { "@id": personSchema["@id"] },
+        }}
+      />
       <section className="relative overflow-hidden">
         <div
           aria-hidden
