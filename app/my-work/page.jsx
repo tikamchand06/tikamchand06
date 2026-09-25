@@ -3,7 +3,8 @@ import { projects } from "@/lib/content"
 
 export const metadata = {
   title: "My Work",
-  description: "Projects I have designed and built.",
+  description:
+    "Web apps, products and browser extensions built by Tikam Chand Meghwanshi.",
 }
 
 export default function WorkPage() {
@@ -17,10 +18,11 @@ export default function WorkPage() {
       <div className="shell relative pt-16 pb-8 md:pt-20 md:pb-20">
         <p className="meta text-muted-foreground">My Work</p>
         <h1 className="display mt-4 text-title">
-          My <span className="text-gradient">work</span>
+          Things I&rsquo;ve <span className="text-gradient">built</span>
         </h1>
         <p className="mt-6 max-w-xl text-lead text-pretty text-muted-foreground">
-          Projects I have designed and built, filtered by the tech behind them.
+          Products and browser extensions I&rsquo;ve designed and shipped. Pick
+          a technology to filter, or click a tag on any card.
         </p>
 
         <div className="mt-12">
