@@ -5,7 +5,11 @@ import { DeveloperIcon } from "@/components/developer-icon"
 const badges = [
   { label: "React", className: "-left-6 top-10", delay: "0s" },
   { label: "Next.js", className: "-right-4 top-1/3", delay: "1.2s" },
-  { label: "Browser Extensions", className: "-left-2 bottom-12", delay: "2.4s" },
+  {
+    label: "Browser Extensions",
+    className: "-left-2 bottom-12",
+    delay: "2.4s",
+  },
   { label: "AWS", className: "left-1/3 -bottom-4", delay: "0.6s" },
 ]
 
@@ -14,7 +18,7 @@ export function HeroPortrait({ src, alt }) {
     <div className="relative mx-auto size-56 md:size-[360px]">
       <div
         aria-hidden
-        className="absolute -inset-8 rounded-full opacity-60 blur-3xl animate-pulse-soft"
+        className="absolute -inset-8 animate-pulse-soft rounded-full opacity-60 blur-3xl"
         style={{
           background:
             "radial-gradient(circle, var(--hue-1-from), var(--hue-2-from) 60%, transparent 75%)",
@@ -23,7 +27,7 @@ export function HeroPortrait({ src, alt }) {
 
       <div
         aria-hidden
-        className="absolute inset-0 rounded-full animate-spin-slow"
+        className="absolute inset-0 animate-spin-slow rounded-full"
         style={{
           background:
             "conic-gradient(from 0deg, var(--hue-1-from), var(--hue-2-from), transparent 55%, var(--hue-1-from))",
@@ -32,7 +36,7 @@ export function HeroPortrait({ src, alt }) {
 
       <div
         aria-hidden
-        className="absolute -inset-5 rounded-full border border-dashed border-border animate-spin-reverse"
+        className="absolute -inset-5 animate-spin-reverse rounded-full border border-dashed border-border"
       />
 
       <div className="absolute inset-[6px] overflow-hidden rounded-full bg-background p-1.5">
@@ -57,7 +61,7 @@ export function HeroPortrait({ src, alt }) {
         <span
           key={badge.label}
           aria-hidden
-          className={`absolute hidden rounded-full border border-border bg-card/90 px-3.5 py-1.5 text-[13px] font-semibold shadow-2 backdrop-blur animate-float md:inline-flex ${badge.className}`}
+          className={`absolute hidden animate-float rounded-full border border-border bg-card/90 px-3.5 py-1.5 text-[13px] font-semibold shadow-2 backdrop-blur md:inline-flex ${badge.className}`}
           style={{ animationDelay: badge.delay }}
         >
           {badge.label}

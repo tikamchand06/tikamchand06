@@ -15,7 +15,7 @@ export default function WorkPage() {
       />
 
       <div className="shell relative pt-16 pb-8 md:pt-20 md:pb-20">
-        <p className="meta text-muted-foreground">Index</p>
+        <p className="meta text-muted-foreground">My Work</p>
         <h1 className="display mt-4 text-title">
           My <span className="text-gradient">work</span>
         </h1>

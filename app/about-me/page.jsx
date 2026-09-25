@@ -13,8 +13,14 @@ import {
   stack,
 } from "@/lib/content"
 
+// First full-time role began Jul 2016
+const careerStart = 2016
+
 const aboutStats = [
-  { label: "Experience", value: "10+ years" },
+  {
+    label: "Experience",
+    value: `${new Date().getFullYear() - careerStart}+ years`,
+  },
   { label: "At UXArmy", value: "Since 2017" },
   { label: "Shipped", value: `${projects.length} projects` },
 ]
@@ -34,7 +40,7 @@ export default function AboutPage() {
         />
 
         <div className="shell relative pt-16 pb-16 md:pt-20">
-          <p className="meta text-muted-foreground">About</p>
+          <p className="meta text-muted-foreground">About Me</p>
           <h1 className="display mt-4 max-w-3xl text-title text-balance">
             {profile.role} building{" "}
             <span className="text-gradient">for the web</span>

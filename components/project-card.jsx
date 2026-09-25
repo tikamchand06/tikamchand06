@@ -1,11 +1,15 @@
 import Image from "next/image"
-import { Globe } from "lucide-react"
+import { ArrowUpRight, Globe } from "lucide-react"
 
 import { BrowserIcons } from "@/components/browser-icons"
 import { ProjectLogo } from "@/components/project-logo"
 import { ProjectThumb } from "@/components/project-thumb"
+import { cn } from "@/lib/utils"
 
-export function ProjectCard({ project, index }) {
+const tagClass =
+  "pointer-events-auto relative z-20 block rounded-full border border-border bg-card/70 px-2.5 py-1.5 text-[13px] leading-none font-semibold text-muted-foreground transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:shadow-2"
+
+export function ProjectCard({ project, index, activeTag, onTagClick }) {
   return (
     <li className="lift group relative overflow-hidden rounded-lg border border-border bg-card shadow-2 hover:border-transparent">
       <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-border bg-muted">
@@ -33,26 +37,45 @@ export function ProjectCard({ project, index }) {
         {project.description ? (
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0 z-10 opacity-0 backdrop-blur-md transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100"
+            className="pointer-events-none absolute inset-0 z-10 hidden opacity-0 backdrop-blur-md transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100 md:block"
           />
         ) : null}
         {project.description ? (
-          <div className="pointer-events-none absolute inset-2 z-10 flex flex-col gap-3 rounded-md border border-border bg-card p-4 opacity-0 shadow-2 transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100">
-            <p className="text-[15px] font-medium leading-relaxed text-pretty text-foreground">
+          <div className="pointer-events-none absolute inset-2 z-10 hidden flex-col gap-3 rounded-md border border-border bg-card p-4 opacity-0 shadow-2 transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100 md:flex">
+            <p className="text-[14px] leading-relaxed font-medium text-pretty text-foreground">
               {project.description}
             </p>
             <ul className="mt-auto flex flex-wrap gap-1.5">
-              {project.tags.map((tag) => (
+              {project.tags.map((tag, index) => (
                 <li
                   key={tag}
-                  className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
+                  style={{ transitionDelay: `${index * 40}ms` }}
+                  className="translate-y-1 opacity-0 transition-all duration-[var(--motion-normal)] group-focus-within:translate-y-0 group-focus-within:opacity-100 group-hover:translate-y-0 group-hover:opacity-100"
                 >
-                  {tag}
+                  {onTagClick ? (
+                    <button
+                      type="button"
+                      aria-pressed={activeTag === tag}
+                      onClick={() => onTagClick(tag)}
+                      className={cn(
+                        tagClass,
+                        "cursor-pointer",
+                        activeTag === tag &&
+                          "border-primary/40 bg-primary/5 text-primary"
+                      )}
+                    >
+                      {tag}
+                    </button>
+                  ) : (
+                    <span className={cn(tagClass, "cursor-default")}>
+                      {tag}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>
             {project.client ? (
-              <p className="text-xs text-muted-foreground">
+              <p className="text-[13px] text-muted-foreground">
                 Built for{" "}
                 {project.clientUrl ? (
                   <a
@@ -86,6 +109,10 @@ export function ProjectCard({ project, index }) {
                 className="transition-colors duration-[var(--motion-fast)] group-hover:text-primary after:absolute after:inset-0"
               >
                 {project.title}
+                <ArrowUpRight
+                  aria-hidden
+                  className="ml-1 inline size-4 -translate-y-0.5 text-muted-foreground transition-transform duration-[var(--motion-fast)] group-hover:translate-x-0.5 group-hover:-translate-y-1 group-hover:text-primary"
+                />
                 <span className="sr-only"> (opens in a new tab)</span>
               </a>
             </h3>
@@ -103,6 +130,11 @@ export function ProjectCard({ project, index }) {
           />
         )}
       </div>
+      {project.description ? (
+        <p className="mx-5 -mt-2 mb-5 line-clamp-2 text-sm text-muted-foreground md:hidden">
+          {project.description}
+        </p>
+      ) : null}
     </li>
   )
 }

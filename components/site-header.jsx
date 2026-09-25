@@ -45,7 +45,7 @@ export function SiteHeader() {
           >
             {profile.initials}
           </span>
-          <span className="display text-[18px] whitespace-nowrap min-[410px]:text-[20px] sm:text-subhead">
+          <span className="display truncate text-[16px] min-[400px]:text-[18px] min-[430px]:text-[20px] sm:text-subhead">
             {profile.name}
           </span>
         </Link>
@@ -102,7 +102,7 @@ export function SiteHeader() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="rounded-sm lg:hidden"
+                  className="size-11 rounded-sm lg:hidden"
                   aria-label="Open menu"
                 >
                   <Menu />

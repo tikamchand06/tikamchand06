@@ -27,7 +27,7 @@ export function SiteFooter() {
 
             <Link
               href="/contact-me"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgb(79_70_229_/_0.55)]"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-glow-strong"
             >
               <Mail aria-hidden className="size-4" />
               Get in touch
@@ -59,7 +59,7 @@ export function SiteFooter() {
                   href={social.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex size-9 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-[var(--motion-fast)] hover:bg-muted hover:text-foreground"
+                  className="flex size-11 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-[var(--motion-fast)] hover:bg-muted hover:text-foreground"
                 >
                   <SocialIcon name={social.icon} className="size-4" />
                   <span className="sr-only">

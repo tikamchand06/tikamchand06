@@ -18,7 +18,7 @@ export default function ContactPage() {
       />
 
       <div className="shell relative pt-16 pb-20 md:pt-20">
-        <p className="meta text-muted-foreground">Contact</p>
+        <p className="meta text-muted-foreground">Contact Me</p>
         <h1 className="display mt-4 max-w-3xl text-title text-balance">
           Have something <span className="text-gradient">worth building?</span>
         </h1>

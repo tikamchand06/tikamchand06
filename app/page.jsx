@@ -44,14 +44,14 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/my-work"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgb(79_70_229_/_0.55)]"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-glow-strong"
               >
                 <BriefcaseBusiness aria-hidden className="size-4" />
                 See my work
               </Link>
               <Link
                 href="/contact-me"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-[0_10px_24px_-8px_rgb(79_70_229_/_0.35)]"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-lift"
               >
                 <Mail aria-hidden className="size-4" />
                 Get in touch
@@ -107,7 +107,7 @@ export default function HomePage() {
 
           <Link
             href="/about-me"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-[0_10px_24px_-8px_rgb(79_70_229_/_0.35)]"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-lift"
           >
             <UserRound aria-hidden className="size-4" />
             More about me
