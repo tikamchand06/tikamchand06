@@ -2,8 +2,8 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 
+import { BrowserIcons } from "@/components/browser-icons"
 import { ProjectLogo } from "@/components/project-logo"
-import { ProjectScreenshots } from "@/components/project-screenshots"
 import { ProjectThumb } from "@/components/project-thumb"
 
 export function ProjectCard({ project, index }) {
@@ -31,13 +31,30 @@ export function ProjectCard({ project, index }) {
             </div>
           </>
         )}
+        {project.description ? (
+          <div className="absolute inset-0 flex flex-col gap-4 bg-card/90 p-6 opacity-0 backdrop-blur-md transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100">
+            <p className="line-clamp-4 text-body text-pretty text-foreground">
+              {project.description}
+            </p>
+            <ul className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <li
+                  key={tag}
+                  className="rounded-full bg-muted px-3 py-1 text-[13px] font-semibold text-muted-foreground"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
       </div>
 
-      <div className="flex flex-col gap-3 p-6">
-        <div className="flex items-start justify-between gap-4">
-          <div className="flex min-w-0 items-center gap-3">
-            {project.image ? <ProjectLogo project={project} size={40} /> : null}
-            <h3 className="display text-subhead">
+      <div className="flex items-center justify-between gap-4 p-5">
+        <div className="flex min-w-0 items-center gap-3">
+          <ProjectLogo project={project} size={44} />
+          <div className="min-w-0">
+            <h3 className="display truncate text-lg">
               <Link
                 href={`/my-work/${project.slug}`}
                 className="transition-colors duration-[var(--motion-fast)] group-hover:text-primary after:absolute after:inset-0"
@@ -45,40 +62,19 @@ export function ProjectCard({ project, index }) {
                 {project.title}
               </Link>
             </h3>
+            <p className="meta truncate text-muted-foreground">
+              {project.client} — {project.year}
+            </p>
           </div>
+        </div>
+        {project.browsers?.length ? (
+          <BrowserIcons browsers={project.browsers} />
+        ) : (
           <ArrowRight
             aria-hidden
             className="size-5 shrink-0 text-muted-foreground transition-all duration-[var(--motion-fast)] group-hover:translate-x-0.5 group-hover:text-primary"
           />
-        </div>
-
-        <p className="meta text-muted-foreground">
-          {project.client} — {project.year}
-        </p>
-
-        {project.description ? (
-          <p className="line-clamp-2 text-body text-pretty text-muted-foreground">
-            {project.description}
-          </p>
-        ) : null}
-
-        {project.screenshots?.length ? (
-          <ProjectScreenshots
-            name={project.title}
-            screenshots={project.screenshots}
-          />
-        ) : null}
-
-        <ul className="mt-2 flex flex-wrap gap-2">
-          {project.tags.map((tag) => (
-            <li
-              key={tag}
-              className="rounded-full bg-muted px-3 py-1 text-[13px] font-semibold text-muted-foreground"
-            >
-              {tag}
-            </li>
-          ))}
-        </ul>
+        )}
       </div>
     </li>
   )
