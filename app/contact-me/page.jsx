@@ -5,7 +5,7 @@ import { SocialIcon } from "@/components/social-icon"
 import { profile } from "@/lib/content"
 
 export const metadata = {
-  title: "Contact",
+  title: "Contact Me",
   description: `Get in touch with ${profile.name}.`,
 }
 

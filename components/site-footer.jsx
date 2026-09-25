@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight, Copyright } from "lucide-react"
+import { Copyright, Mail } from "lucide-react"
 
 import { SocialIcon } from "@/components/social-icon"
 import { profile } from "@/lib/content"
@@ -8,10 +8,10 @@ export function SiteFooter() {
   return (
     <footer className="mt-8 border-t border-border md:mt-28">
       <div className="shell py-12">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-2 md:p-12">
+        <div className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-2 transition-all duration-[var(--motion-normal)] hover:border-primary/30 hover:shadow-glow md:p-12">
           <div
             aria-hidden
-            className="aurora pointer-events-none absolute -inset-16 opacity-50"
+            className="aurora pointer-events-none absolute -inset-16 opacity-50 transition-opacity duration-[var(--motion-slow)] group-hover:opacity-90"
           />
 
           <div className="relative flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -27,10 +27,10 @@ export function SiteFooter() {
 
             <Link
               href="/contact-me"
-              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground shadow-glow transition-transform duration-[var(--motion-fast)] hover:-translate-y-0.5"
+              className="inline-flex shrink-0 items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgb(79_70_229_/_0.55)]"
             >
+              <Mail aria-hidden className="size-4" />
               Get in touch
-              <ArrowUpRight aria-hidden className="size-4" />
             </Link>
           </div>
         </div>

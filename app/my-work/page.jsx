@@ -2,7 +2,7 @@ import { WorkBrowser } from "@/components/work-browser"
 import { projects } from "@/lib/content"
 
 export const metadata = {
-  title: "Work",
+  title: "My Work",
   description: "Projects I have designed and built.",
 }
 

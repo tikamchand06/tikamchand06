@@ -9,11 +9,18 @@ import {
   experience,
   featuredProjects,
   profile,
+  projects,
   stack,
 } from "@/lib/content"
 
+const aboutStats = [
+  { label: "Experience", value: "10+ years" },
+  { label: "At UXArmy", value: "Since 2017" },
+  { label: "Shipped", value: `${projects.length} projects` },
+]
+
 export const metadata = {
-  title: "About",
+  title: "About Me",
   description: "Who I am and what I build with.",
 }
 
@@ -50,6 +57,15 @@ export default function AboutPage() {
                   {paragraph}
                 </p>
               ))}
+
+              <dl className="flex flex-wrap gap-x-10 gap-y-4 border-t border-border pt-6">
+                {aboutStats.map((stat) => (
+                  <div key={stat.label}>
+                    <dt className="meta text-muted-foreground">{stat.label}</dt>
+                    <dd className="display mt-1 text-subhead">{stat.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </div>

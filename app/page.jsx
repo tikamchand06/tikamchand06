@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowRight, ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, BriefcaseBusiness, Mail, UserRound } from "lucide-react"
 
 import { HeroPortrait } from "@/components/hero-portrait"
 import { ProjectGrid } from "@/components/project-grid"
@@ -44,24 +44,26 @@ export default function HomePage() {
             <div className="mt-10 flex flex-wrap items-center gap-4">
               <Link
                 href="/my-work"
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-transform duration-[var(--motion-fast)] hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-7 py-3.5 font-semibold text-primary-foreground shadow-glow transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-8px_rgb(79_70_229_/_0.55)]"
               >
+                <BriefcaseBusiness aria-hidden className="size-4" />
                 See my work
-                <ArrowRight aria-hidden className="size-4" />
               </Link>
               <Link
                 href="/contact-me"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold transition-colors duration-[var(--motion-fast)] hover:bg-muted"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-[0_10px_24px_-8px_rgb(79_70_229_/_0.35)]"
               >
+                <Mail aria-hidden className="size-4" />
                 Get in touch
               </Link>
             </div>
 
             <ul className="mt-14 flex flex-wrap gap-2">
-              {marquee.map((item) => (
+              {marquee.map((item, index) => (
                 <li
                   key={item}
-                  className="rounded-full border border-border bg-card/70 px-4 py-1.5 text-[13px] font-semibold text-muted-foreground"
+                  style={{ animationDelay: `${index * 40}ms` }}
+                  className="animate-in cursor-default rounded-full border border-border bg-card/70 px-4 py-1.5 text-[13px] font-semibold text-muted-foreground transition-all duration-[var(--motion-fast)] fill-mode-both fade-in slide-in-from-bottom-2 hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/5 hover:text-primary hover:shadow-2"
                 >
                   {item}
                 </li>
@@ -97,7 +99,7 @@ export default function HomePage() {
       </section>
 
       <section className="shell pt-20">
-        <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-8 shadow-2 md:grid-cols-[1fr_auto] md:p-12">
+        <div className="group grid items-center gap-10 rounded-2xl border border-border bg-card p-8 shadow-2 transition-all duration-[var(--motion-normal)] hover:border-primary/30 hover:shadow-glow md:grid-cols-[1fr_auto] md:p-12">
           <div>
             <p className="meta text-muted-foreground">About</p>
             <p className="mt-5 max-w-2xl text-lead text-pretty">{about[0]}</p>
@@ -105,10 +107,10 @@ export default function HomePage() {
 
           <Link
             href="/about-me"
-            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border px-6 py-3 font-semibold transition-colors duration-[var(--motion-fast)] hover:bg-muted"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 font-semibold shadow-2 transition-all duration-[var(--motion-fast)] hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary hover:shadow-[0_10px_24px_-8px_rgb(79_70_229_/_0.35)]"
           >
+            <UserRound aria-hidden className="size-4" />
             More about me
-            <ArrowRight aria-hidden className="size-4" />
           </Link>
         </div>
       </section>
