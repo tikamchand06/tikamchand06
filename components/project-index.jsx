@@ -26,7 +26,7 @@ export function ProjectIndex({ projects, label, startIndex = 0 }) {
                 </a>
               </h3>
               <p className="meta mt-3 text-muted-foreground">
-                {project.client} — {project.year}
+                {project.category} — {project.year}
               </p>
             </div>
 

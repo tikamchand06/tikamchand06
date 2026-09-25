@@ -1,4 +1,4 @@
-import { profile, projects } from "@/lib/content"
+import { profile } from "@/lib/content"
 
 const routes = [
   { path: "", priority: 1 },
@@ -10,12 +10,7 @@ const routes = [
 export default function sitemap() {
   const lastModified = new Date()
 
-  const projectRoutes = projects.map((project) => ({
-    path: `/my-work/${project.slug}`,
-    priority: 0.6,
-  }))
-
-  return [...routes, ...projectRoutes].map(({ path, priority }) => ({
+  return routes.map(({ path, priority }) => ({
     url: `${profile.url}${path}`,
     lastModified,
     changeFrequency: "monthly",

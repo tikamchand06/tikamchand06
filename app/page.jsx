@@ -96,7 +96,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="shell py-20">
+      <section className="shell pt-20">
         <div className="grid items-center gap-10 rounded-2xl border border-border bg-card p-8 shadow-2 md:grid-cols-[1fr_auto] md:p-12">
           <div>
             <p className="meta text-muted-foreground">About</p>

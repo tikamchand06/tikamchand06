@@ -1,6 +1,5 @@
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import { Globe } from "lucide-react"
 
 import { BrowserIcons } from "@/components/browser-icons"
 import { ProjectLogo } from "@/components/project-logo"
@@ -32,20 +31,45 @@ export function ProjectCard({ project, index }) {
           </>
         )}
         {project.description ? (
-          <div className="absolute inset-0 flex flex-col gap-4 bg-card/90 p-6 opacity-0 backdrop-blur-md transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100">
-            <p className="line-clamp-4 text-body text-pretty text-foreground">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0 z-10 opacity-0 backdrop-blur-md transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100"
+          />
+        ) : null}
+        {project.description ? (
+          <div className="pointer-events-none absolute inset-2 z-10 flex flex-col gap-3 rounded-md border border-border bg-card p-4 opacity-0 shadow-2 transition-opacity duration-[var(--motion-normal)] group-focus-within:opacity-100 group-hover:opacity-100">
+            <p className="text-[15px] font-medium leading-relaxed text-pretty text-foreground">
               {project.description}
             </p>
-            <ul className="flex flex-wrap gap-2">
+            <ul className="mt-auto flex flex-wrap gap-1.5">
               {project.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-full bg-muted px-3 py-1 text-[13px] font-semibold text-muted-foreground"
+                  className="rounded-full border border-border px-2.5 py-0.5 text-xs font-medium text-muted-foreground"
                 >
                   {tag}
                 </li>
               ))}
             </ul>
+            {project.client ? (
+              <p className="text-xs text-muted-foreground">
+                Built for{" "}
+                {project.clientUrl ? (
+                  <a
+                    href={project.clientUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pointer-events-auto font-semibold text-foreground hover:text-primary hover:underline"
+                  >
+                    {project.client}
+                  </a>
+                ) : (
+                  <span className="font-semibold text-foreground">
+                    {project.client}
+                  </span>
+                )}
+              </p>
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -55,24 +79,27 @@ export function ProjectCard({ project, index }) {
           <ProjectLogo project={project} size={44} />
           <div className="min-w-0">
             <h3 className="display truncate text-lg">
-              <Link
-                href={`/my-work/${project.slug}`}
+              <a
+                href={project.href}
+                target="_blank"
+                rel="noreferrer"
                 className="transition-colors duration-[var(--motion-fast)] group-hover:text-primary after:absolute after:inset-0"
               >
                 {project.title}
-              </Link>
+                <span className="sr-only"> (opens in a new tab)</span>
+              </a>
             </h3>
             <p className="meta truncate text-muted-foreground">
-              {project.client} — {project.year}
+              {project.category} — {project.year}
             </p>
           </div>
         </div>
         {project.browsers?.length ? (
           <BrowserIcons browsers={project.browsers} />
         ) : (
-          <ArrowRight
-            aria-hidden
-            className="size-5 shrink-0 text-muted-foreground transition-all duration-[var(--motion-fast)] group-hover:translate-x-0.5 group-hover:text-primary"
+          <Globe
+            aria-label="Website"
+            className="size-6 shrink-0 text-muted-foreground"
           />
         )}
       </div>

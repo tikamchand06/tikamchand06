@@ -1,4 +1,5 @@
-import { ArrowUpRight, Mail } from "lucide-react"
+import { ArrowUpRight, Mail, MapPin, Phone } from "lucide-react"
+import Image from "next/image"
 
 import { SocialIcon } from "@/components/social-icon"
 import { profile } from "@/lib/content"
@@ -27,22 +28,51 @@ export default function ContactPage() {
         </p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-[1.3fr_1fr]">
-          <a
-            href={`mailto:${profile.email}`}
-            className="lift group relative flex flex-col justify-between gap-10 overflow-hidden rounded-2xl p-8 text-white shadow-glow md:p-10"
+          <div
+            className="lift relative flex min-h-[420px] flex-col justify-between gap-10 overflow-hidden rounded-2xl p-8 text-white shadow-glow md:p-10"
             style={{
               background:
                 "linear-gradient(135deg, var(--hue-1-from), var(--hue-2-from))",
             }}
           >
-            <span className="meta opacity-80">Mail me on</span>
-            <span className="display flex items-center gap-4 text-heading break-all">
-              <Mail aria-hidden className="size-8 shrink-0" />
-              {profile.email}
-            </span>
-          </a>
+            <Image
+              src="/contact.webp"
+              alt=""
+              fill
+              sizes="(min-width: 768px) 60vw, 100vw"
+              className="object-cover"
+              priority
+            />
+            <span className="meta relative opacity-80">Mail me on</span>
+            <ul className="display relative grid gap-3 text-subhead">
+              {profile.phone && (
+                <li>
+                  <a
+                    href={`tel:${profile.phone.replace(/\s/g, "")}`}
+                    className="flex items-center gap-3 hover:underline"
+                  >
+                    <Phone aria-hidden className="size-5 shrink-0" />
+                    {profile.phone}
+                  </a>
+                </li>
+              )}
+              <li>
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="flex items-center gap-3 break-all hover:underline"
+                >
+                  <Mail aria-hidden className="size-5 shrink-0" />
+                  {profile.email}
+                </a>
+              </li>
+              <li className="flex items-center gap-3">
+                <MapPin aria-hidden className="size-5 shrink-0" />
+                {profile.location}
+              </li>
+            </ul>
+          </div>
 
-          <ul className="grid gap-4">
+          <ul className="grid content-start gap-4">
             {profile.socials.map((social) => (
               <li key={social.label}>
                 <a

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUpRight, Copyright } from "lucide-react"
 
 import { SocialIcon } from "@/components/social-icon"
 import { profile } from "@/lib/content"
@@ -37,7 +37,11 @@ export function SiteFooter() {
 
         <div className="mt-10 flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
           <p className="meta text-muted-foreground">
-            © {new Date().getFullYear()} {profile.name} · Icons by{" "}
+            <Copyright
+              aria-label="Copyright"
+              className="inline size-3.5 -translate-y-px align-middle"
+            />{" "}
+            {new Date().getFullYear()} {profile.name} · Icons by{" "}
             <a
               href="https://lordicon.com/"
               target="_blank"
